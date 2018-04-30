@@ -4,14 +4,19 @@ import './App.css';
 
 import Report from './component/report';
 
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
+
+import { DateRangePicker } from 'react-dates';
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: '',
       value: 1,
-      startDate: '',
-      endDate: '',
+      startDate: null,
+      endDate: null,
       formSubmitted: false
     };
 
@@ -52,12 +57,16 @@ class App extends Component {
               <input type="number" name="value" min={1} max={100} onChange={this.handleChange} />
             </label>
             <label>
-              State Date:
-              <input type="date" name="startDate" onChange={this.handleChange} />
-            </label>
-            <label>
-              End Date:
-              <input type="date" name="endDate" onChange={this.handleChange} />
+              Select Date:
+              <DateRangePicker
+                startDateId="startDate"
+                endDateId="endDate"
+                startDate={this.state.startDate}
+                endDate={this.state.endDate}
+                onDatesChange={({ startDate, endDate }) => { this.setState({ startDate, endDate }) }}
+                focusedInput={this.state.focusedInput}
+                onFocusChange={(focusedInput) => { this.setState({ focusedInput }) }}
+              />
             </label>
             <p>{this.props.name}</p>
             <input type="submit" value="Submit" />
