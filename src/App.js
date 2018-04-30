@@ -5,7 +5,6 @@ import './App.css';
 import Report from './component/report';
 
 class App extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -26,23 +25,15 @@ class App extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const { name, value, startDate, endDate } = this.state;
-    console.log("Name: " + name);
-    console.log("Value: " + value);
-    console.log("Start Date: " + startDate);
-    console.log("End Date:" + endDate);
-
     this.setState({
       formSubmitted: true
     });
-
   }
 
-
   render() {
-    console.log(this.name);
+    const { name, value, startDate, endDate } = this.state;
     if (this.state.formSubmitted) {
-      return <Report />
+      return <Report name={name} value={value} startDate={startDate} endDate={endDate} />
     } else {
       return (
         <div className="App">
@@ -54,26 +45,21 @@ class App extends Component {
           <form onSubmit={this.handleSubmit}>
             <label>
               Name:
-          <input type="text" name="name" onChange={this.handleChange} />
+              <input type="text" name="name" onChange={this.handleChange} />
             </label>
-
             <label>
               Value:
-          <input type="number" name="value" min={1} max={100} onChange={this.handleChange} />
+              <input type="number" name="value" min={1} max={100} onChange={this.handleChange} />
             </label>
-
             <label>
               State Date:
-          <input type="date" name="startDate" onChange={this.handleChange} />
+              <input type="date" name="startDate" onChange={this.handleChange} />
             </label>
-
             <label>
               End Date:
-          <input type="date" name="endDate" onChange={this.handleChange} />
+              <input type="date" name="endDate" onChange={this.handleChange} />
             </label>
-
             <p>{this.props.name}</p>
-
             <input type="submit" value="Submit" />
           </form>
         </div>
