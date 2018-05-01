@@ -2,7 +2,7 @@
   "name": "report-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ashvinikumar.github.io/report-app/",
+  "homepage": "https://ashvinikumar.github.io/report-app",
   "dependencies": {
     "gh-pages": "^1.1.0",
     "react": "^16.3.2",
